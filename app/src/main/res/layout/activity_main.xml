@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="@string/change"
+        />
+
+    <Button
+
+        android:id="@+id/but_add_number"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="@string/add_number"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:id="@+id/numbText"
+        />
+
+    <fragment
+        android:name="com.example.dz1.Fragment1"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:id="@+id/fragment_top"
+        tools:layout="@layout/fragment_1" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_bottom" />
+
+
+</TableLayout>
