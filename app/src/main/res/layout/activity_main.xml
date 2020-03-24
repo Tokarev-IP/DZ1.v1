@@ -21,23 +21,10 @@
         android:text="@string/add_number"
         />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:id="@+id/numbText"
-        />
-
-    <fragment
-        android:name="com.example.dz1.Fragment1"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:id="@+id/fragment_top"
-        tools:layout="@layout/fragment_1" />
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fragment_bottom" />
+        android:id="@+id/fragment_container" />
 
 
 </TableLayout>

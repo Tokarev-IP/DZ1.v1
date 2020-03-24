@@ -8,13 +8,11 @@ public class DataSource {
 
 
     private static DataSource sInstance;
-    private final List<MyData> mData;
+    private final List<MyData> mData; //создаем лист даты
 
-    public DataSource() {
+    public DataSource() {  //в конструкторе его создаем
+
         mData = new ArrayList<>();
-
-
-
          int add = 101;
         for (int i=1; i<add; i++) {
             String string1 = Integer.toString(i);
@@ -23,7 +21,7 @@ public class DataSource {
     }
 
 
-    public List<MyData> getData() {
+    public List<MyData> getData() {  //метод возврата даты
         return mData;
     }
 
@@ -36,7 +34,6 @@ public class DataSource {
 
 
     public static class MyData{
-
 
         public MyData(String title) {
             mTitle = title;

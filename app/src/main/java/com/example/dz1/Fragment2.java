@@ -1,34 +1,13 @@
 package com.example.dz1;
 
-
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.content.Intent;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.List;
-
-
 
 
 public class Fragment2 extends BaseFragment {
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,7 +23,6 @@ public class Fragment2 extends BaseFragment {
             String stringPos = Integer.toString(myInt + 1);
             mTextView.setText(stringPos);
         }
-
         return inflatedView;
     }
 }
