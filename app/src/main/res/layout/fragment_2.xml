@@ -1,20 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-
-
-    <TextView
-        android:textSize="50sp"
+    <Button
+        android:id="@+id/go_back_button"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-          android:background="#FDE1EA"
-        android:id="@+id/numberText"
+        android:layout_height="50dp"
+        android:text="@string/go_back"
         />
 
+    <TextView
+        android:id="@+id/numberText1"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:layout_gravity="center"
+        android:textSize="200sp"
+        android:layout_marginTop="50dp"
+        android:textColor="#F80606"/>
 
-</TableLayout>
+    <TextView
+        android:id="@+id/numberText2"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:layout_gravity="center"
+        android:textSize="200sp"
+        android:layout_marginTop="50dp"
+        android:textColor="#005CFA"/>
+
+</RelativeLayout>

@@ -5,22 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:text="@string/change"
-        />
-
-    <Button
-
-        android:id="@+id/but_add_number"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:text="@string/add_number"
-        />
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

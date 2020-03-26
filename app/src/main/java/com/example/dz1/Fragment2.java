@@ -4,76 +4,47 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.fragment.app.FragmentTransaction;
 
 
 public class Fragment2 extends BaseFragment {
+
+    public static final String MY_EXTRA ="my_extra";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View inflatedView = inflater.inflate(R.layout.fragment_2, container, false);
-      //  mButton = (Button) inflatedView.findViewById(R.id.setNumber);
-        TextView mTextView = inflatedView.findViewById(R.id.numberText);
+
+        TextView mTextView1 = inflatedView.findViewById(R.id.numberText1);
+        TextView mTextView2 = inflatedView.findViewById(R.id.numberText2);
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            int myInt = bundle.getInt("key");
+            int myInt = bundle.getInt(MY_EXTRA);
             String stringPos = Integer.toString(myInt + 1);
-            mTextView.setText(stringPos);
-        }
-        return inflatedView;
-    }
-}
-
-
-
-
-
-
-
-
-     /* class Fragment21 extends AppCompatActivity {
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        TextView mTextView;
-
-        mTextView = findViewById(R.id.numberText);
-
-        Intent intent = getIntent();
-        int extraInt = intent.getIntExtra(MainActivity.MY_EXTRA, -1);
-        String stringPos = Integer.toString(extraInt + 1);
-        mTextView.setText(stringPos);
-    }
-}
-      */
-
-/*
-    @Override
-    public void onActivityDataListener(String string) {
-
-
-        Button mButton;
-        TextView mTextView;
-
-        View inflatedView = inflater.inflate(R.layout.fragment_2, container, false);
-        mButton = (Button) inflatedView.findViewById(R.id.setNumber);
-        mTextView = (TextView) inflatedView.findViewById(R.id.numberText);
-        mButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                mTextView.setText("парапарап");
+            if (myInt % 2 == 0) {
+                mTextView2.setText(stringPos);
             }
-        });
+            else mTextView1.setText(stringPos);
+        }
+
+        Button goButton =  inflatedView.findViewById(R.id.go_back_button);
+        goButton.setOnClickListener(v ->{
+
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, new Fragment1());
+            transaction.addToBackStack(null);
+            transaction.commit();
+                });
+
         return inflatedView;
     }
-
-    }
-
-*/
+}
 
 
 

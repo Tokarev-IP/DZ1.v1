@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,8 +20,6 @@ import java.util.List;
 public class Fragment1 extends BaseFragment {
 
     private MyDataAdapter mAdapter;
-    List<DataSource.MyData> mData;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,9 +28,25 @@ public class Fragment1 extends BaseFragment {
         View inflatedView = inflater.inflate(R.layout.fragment_1, container, false);
         RecyclerView recyclerView = inflatedView.findViewById(R.id.list);                                 //находим ресайкл
 
-        mAdapter = new MyDataAdapter(DataSource.getInstance().getData());                         //создаем адаптер
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));         //говорим, какой лэйаут менеджер использовать
-        recyclerView.setAdapter(mAdapter);                                                        //устанавливаем адаптер
+        mAdapter = new MyDataAdapter(DataSource.getInstance().getData());
+
+        int spanCount = getResources().getBoolean(R.bool.is_horizontal) ?
+         4 :  3;
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), spanCount));           //говорим, какой лэйаут менеджер использовать
+         
+                
+        recyclerView.setAdapter(mAdapter);                                                              //устанавливаем адаптер
+
+        Button addButton =  inflatedView.findViewById(R.id.add_button);
+
+        addButton.setOnClickListener(v -> {
+            int index = DataSource.getInstance().getData().size();
+            String index_string = Integer.toString(index+1);
+            DataSource.getInstance().getData().add(new DataSource.MyData(index_string));
+            mAdapter.notifyItemInserted(index);
+        });
+
+
 
         return inflatedView;
     }
@@ -41,17 +56,6 @@ public class Fragment1 extends BaseFragment {
         List<DataSource.MyData> mData;  //поле у адаптера, которую мы будем записывать в конструкторе
         final int TYPE_FIRST = 0;
         final  int TYPE_SECOND = 1;
-
-        /*
-        private void insert() {
-            String item = "101";
-            int insertIndex = 101;
-            mData.add(insertIndex, new DataSource.MyData(item) );
-            notifyItemInserted(insertIndex);
-        }
-
-         */
-
 
         public MyDataAdapter(List<DataSource.MyData> data) {  //конструктор, куда будут передаваться наши данные
             mData = data;
@@ -97,23 +101,6 @@ public class Fragment1 extends BaseFragment {
         public int getItemViewType(int position) {
             return (position % 2 == 0) ? TYPE_FIRST : TYPE_SECOND;
         }
-
-/*
-        private void insert(int position,  DataSource.MyData data) {
-
-            String item = "Pig";
-            int insertIndex = 2;
-            mData.add(insertIndex, new DataSource.MyData(item) );
-            mAdapter.notifyItemInserted(insertIndex);
-
-            String  k ="101";
-            mData.add(101, new DataSource.MyData(k)  );
-            mAdapter.notifyItemInserted(position);
-
-            mData.clear();
-            mAdapter.notifyDataSetChanged();
-        }
- */
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
@@ -129,22 +116,23 @@ public class Fragment1 extends BaseFragment {
 
                 int pos = getAdapterPosition();
 
+
+               Fragment fragment2 = new Fragment2();
+
                 Bundle bundle = new Bundle();
-                bundle.putInt("key", pos);
-                new Fragment2().setArguments(bundle);
+                bundle.putInt("my_extra", pos);
+                fragment2.setArguments(bundle);
 
                 if (getFragmentManager()!=null) {
                     FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.fragment_container, new Fragment2());
+                    transaction.replace(R.id.fragment_container, fragment2);
                     transaction.addToBackStack(null);
                     transaction.commit();
                 }
 
             });
         }
-
     }
-
     }
 
 

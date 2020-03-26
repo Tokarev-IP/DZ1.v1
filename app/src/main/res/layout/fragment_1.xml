@@ -6,15 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/add_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/add"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="80dp"
+
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
     </androidx.recyclerview.widget.RecyclerView>
-
-
 
 </TableLayout>
