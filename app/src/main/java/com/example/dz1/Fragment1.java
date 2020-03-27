@@ -19,6 +19,7 @@ import java.util.List;
 
 public class Fragment1 extends BaseFragment {
 
+    public static final Integer NUMBER =101;
     public static final String MY_EXTRA ="my_extra";
     private static final String STATE = "state";
     private MyDataAdapter mAdapter;
@@ -53,7 +54,7 @@ public class Fragment1 extends BaseFragment {
             int int_cash = Integer.parseInt(string_cash);
 
             if (int_cash!=data){
-                for (int i=101; i<=int_cash; i++) {
+                for (int i=NUMBER; i<=int_cash; i++) {
                     String string_i = Integer.toString(i);
                     DataSource.getInstance().getData().add(new DataSource.MyData(string_i));
                 }

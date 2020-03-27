@@ -5,14 +5,15 @@ import java.util.List;
 
 public class DataSource {
 
+    public static final Integer MIN =1;
+    public static final Integer MAX =100;
+
     private static DataSource sInstance;
     private final List<MyData> mData; //создаем лист даты
 
     public DataSource() {  //в конструкторе его создаем
-
         mData = new ArrayList<>();
-        int max = 100;
-        for (int i=1; i<=max; i++) {
+        for (int i=MIN; i<=MAX; i++) {
             String string1 = Integer.toString(i);
             mData.add(new MyData(string1));
      }
