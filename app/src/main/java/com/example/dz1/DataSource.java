@@ -11,11 +11,11 @@ public class DataSource {
     public DataSource() {  //в конструкторе его создаем
 
         mData = new ArrayList<>();
-        for (int i=1; i<101; i++) {
+        int max = 100;
+        for (int i=1; i<=max; i++) {
             String string1 = Integer.toString(i);
             mData.add(new MyData(string1));
-        }
-
+     }
     }
 
 

@@ -19,6 +19,8 @@ import java.util.List;
 
 public class Fragment1 extends BaseFragment {
 
+    public static final String MY_EXTRA ="my_extra";
+    private static final String STATE = "state";
     private MyDataAdapter mAdapter;
 
     @Override
@@ -30,9 +32,8 @@ public class Fragment1 extends BaseFragment {
 
         mAdapter = new MyDataAdapter(DataSource.getInstance().getData());
 
-        int spanCount = getResources().getBoolean(R.bool.is_horizontal) ?
-         4 :  3;
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), spanCount));           //говорим, какой лэйаут менеджер использовать
+
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), getResources().getInteger(R.integer.col_clount)));           //говорим, какой лэйаут менеджер использовать
          
                 
         recyclerView.setAdapter(mAdapter);                                                              //устанавливаем адаптер
@@ -46,10 +47,29 @@ public class Fragment1 extends BaseFragment {
             mAdapter.notifyItemInserted(index);
         });
 
+        if (savedInstanceState != null) {
+            String string_cash = savedInstanceState.getString(STATE);
+            int data = DataSource.getInstance().getData().size();
+            int int_cash = Integer.parseInt(string_cash);
 
+            if (int_cash!=data){
+                for (int i=101; i<=int_cash; i++) {
+                    String string_i = Integer.toString(i);
+                    DataSource.getInstance().getData().add(new DataSource.MyData(string_i));
+                }
+            }
+        }
 
         return inflatedView;
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        String cash = Integer.toString(DataSource.getInstance().getData().size());
+        outState.putString(STATE, cash);
+    }
+
 
     class MyDataAdapter extends RecyclerView.Adapter<MyViewHolder> {  //создаем класс адаптера (типизирован ViewHolder'ом( его дженерик))
 
@@ -120,7 +140,7 @@ public class Fragment1 extends BaseFragment {
                Fragment fragment2 = new Fragment2();
 
                 Bundle bundle = new Bundle();
-                bundle.putInt("my_extra", pos);
+                bundle.putInt(MY_EXTRA, pos);
                 fragment2.setArguments(bundle);
 
                 if (getFragmentManager()!=null) {

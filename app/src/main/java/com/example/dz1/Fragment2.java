@@ -33,15 +33,6 @@ public class Fragment2 extends BaseFragment {
             else mTextView1.setText(stringPos);
         }
 
-        Button goButton =  inflatedView.findViewById(R.id.go_back_button);
-        goButton.setOnClickListener(v ->{
-
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_container, new Fragment1());
-            transaction.addToBackStack(null);
-            transaction.commit();
-                });
-
         return inflatedView;
     }
 }
